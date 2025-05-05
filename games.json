@@ -1,0 +1,52 @@
+{
+  "games": [
+    {
+      "id": 0,
+      "title": "Cyberpunk 2077",
+      "price": 59.99,
+      "image": "foto's/cyberpunk.png"
+    },
+    {
+      "id": 1,
+      "title": "Elden Ring",
+      "price": 69.99,
+      "image": "foto's/eldenring.png"
+    },
+    {
+      "id": 2,
+      "title": "God of War Ragnarök",
+      "price": 49.99,
+      "image": "foto's/godofwar.png"
+    },
+    {
+      "id": 3,
+      "title": "Horizon Forbidden West",
+      "price": 59.99,
+      "image": "foto's/horizon.png"
+    },
+    {
+      "id": 4,
+      "title": "FIFA 25",
+      "price": 69.99,
+      "image": "foto's/fifa.png"
+    },
+    {
+      "id": 5,
+      "title": "Call of Duty: Modern Warfare",
+      "price": 59.99,
+      "image": "foto's/callofduty.png"
+    },
+    {
+      "id": 6,
+      "title": "The Legend of Zelda",
+      "price": 49.99,
+      "image": "foto's/zelda.png"
+    },
+    {
+      "id": 7,
+      "title": "Final Fantasy XVI",
+      "price": 69.99,
+      "image": "foto's/fantasy.png"
+    }
+  ]
+}
