@@ -1,42 +1,26 @@
 # GameStore
-### 📖 Beschrijving
+## 📖 Beschrijving
 
-GameStore is een game webshop die ik heb gemaakt voor een schoolproject waar bij ik gebruik heb gemaakt van HTML, frameworks, JavaScript en CSS. dingen die je gaat zien in de webshop:
+GameStore is een game webshop die ik heb gemaakt voor een schoolproject waarbij ik gebruik heb gemaakt van HTML, het bootstrap framwork, JavaScript en CSS. Dingen die je gaat zien in de webshop:
 
-- werkende winkelmandje
-- werkende zoekbalk
+- Werkend winkelmandje
+- Werkende zoekbalk
 
-## 💡Guide:
+## 💡Instalattion guide:
+1. **Clone de repository**: Navigeer met je CLI naar de locatie waar je dit project neer wilt zetten, en run het commando `git clone https://github.com/youssef-aj/Youssef-aj.github.io.git`.
 
-De repository en de HTML staan bij elkaar en een aantal bestanden zitten in aparte folders:
+2. Je kan nu de website openen door het index.html bestand te openen.
 
-- **foto's:** voor afbeeldingen
+## Dependencies
 
-- **CSS:** voor CSS-bestanden
+Dit project heeft geen dependencies die geinstalleerd moeten worden nadat je deze repository hebt gecloned. BootstrapCSS wordt geinstalleerd via CDN dus het is niet nodig om deze via NPM te installeren.
 
-- **JavaScript:** voor de scripts
+## Credtis
+ [Lucan Wienen](https://github.com/LABA-LUCAS) heeft mijn geholpen met het implementeren van localstorage
 
-### installatie guid
-Voor dit project heb je VS (Visual Studio) nodig, een browser en wifi nodig. Controleer of je het volgende hebt geïnstalleerd:
+## About me
 
-https://code.visualstudio.com/download
+### Mijn naam is Youssef Ajari en ik ben een software developer. je kan mijn vinden op:
+- [Instagram](https://www.instagram.com/youssef17.aj/)
+- [Linkedin](https://www.linkedin.com/in/youssef-ajari-75156a334/)
 
-https://www.google.com/chrome/
-
-### stap 1:
-- als je de 2 dingen hebt geinstaleerd ga dan naar je file explorer/verkenner maak daar een folder aan de naam mag je zelf verzinnen
-
-
-### stap 2:
-open je VS code selecteer de folder die je hebt aangemaakt zodra je dat hebt gedaan klik je in je folder en klik je rechtermuisknop en dan op integrated terminal
-
-![alt text](image.png)
-
-### stap 3:
-als je stap 2 hebt gevolgd klik je nu op integrated terminal
-en dat voer je dit in git clone https://github.com/youssef-aj/Youssef-aj.github.io.git 
-
-het moet dan uitkomen net als deze foto
-![alt text](image-2.png)
-
-dan als goed is heb je alle bestanden van mijn webshop
