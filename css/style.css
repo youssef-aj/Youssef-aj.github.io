@@ -42,39 +42,6 @@ body {
     align-items: center;
 }
 
-/* Search bar */
-.search-container {
-    display: flex;
-    align-items: center;
-    background-color: #1a2029;
-    border-radius: 20px;
-    padding: 5px 10px;
-    margin: 0 15px;
-    flex-grow: 1;
-    max-width: 500px;
-}
-
-.search-input {
-    background: none;
-    border: none;
-    color: white;
-    outline: none;
-    width: 100%;
-    padding: 5px;
-}
-
-.search-input::placeholder {
-    color: #8a9aad;
-}
-
-.search-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: white;
-    padding: 5px;
-}
-
 /* Profile dropdown */
 .profile-dropdown {
     margin-right: 10px;
@@ -393,75 +360,4 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-/* Make it responsive */
-@media (max-width: 991px) {
-    .search-container {
-        margin: 10px 0;
-        max-width: 100%;
-    }
-
-    .profile-dropdown {
-        margin: 10px 0;
-    }
-
-    .carousel-item {
-        height: 300px;
-    }
-
-    .carousel-title {
-        font-size: 1.8rem;
-    }
-
-    .navbar-collapse {
-        margin-top: 15px;
-    }
-
-    .navbar-nav {
-        flex-direction: row;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-    }
-
-    .nav-item {
-        margin-right: 10px;
-    }
-
-    footer.fixed-bottom {
-        position: static;
-    }
-}
-
-@media (max-width: 767px) {
-    .carousel-item {
-        height: 200px;
-    }
-
-    .carousel-title {
-        font-size: 1.5rem;
-    }
-
-    .search-container {
-        order: -1;
-        width: 100%;
-    }
-
-    .container {
-        padding-bottom: 60px;
-    }
-}
-
-@media (max-width: 576px) {
-    .navbar-brand {
-        font-size: 20px;
-    }
-
-    .search-container {
-        margin-bottom: 10px;
-    }
-
-    .card-img-container {
-        height: 150px;
-    }
 }
