@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initiële data laden
     loadOrders();    // Bestellingen ophalen uit localStorage
     loadProducts();  // Producten ophalen uit localStorage
-    
+
     // Event listeners voor formulieren en knoppen instellen
     document.getElementById('add-product-form').addEventListener('submit', addProduct);   // Formulier voor nieuw product
     document.getElementById('reset-products').addEventListener('click', resetProducts);   // Reset knop voor producten
@@ -22,7 +22,7 @@ function loadOrders() {
     // Bestellingen ophalen uit localStorage (of lege array als er geen zijn)
     const orders = JSON.parse(localStorage.getItem('orders')) || [];
     const ordersGrid = document.getElementById('orders-grid');
-    
+
     // HTML genereren voor elke bestelling en in de DOM plaatsen
     ordersGrid.innerHTML = orders.map(order => `
         <div class="card mb-2">
@@ -43,7 +43,7 @@ function loadProducts() {
     // Producten ophalen uit localStorage (of lege array als er geen zijn)
     const products = JSON.parse(localStorage.getItem('gamesStorage'))?.games || [];
     const table = document.getElementById('products-table');
-    
+
     // HTML genereren voor elk product in tabelvorm
     table.innerHTML = products.map(product => `
         <tr>
@@ -65,10 +65,10 @@ function loadProducts() {
 function addProduct(e) {
     // Voorkom standaard formuliergedrag (pagina verversen)
     e.preventDefault();
-    
+
     // Huidige producten ophalen uit localStorage
     const products = JSON.parse(localStorage.getItem('gamesStorage'))?.games || [];
-    
+
     // Nieuw product aanmaken met gegevens uit het formulier
     const newProduct = {
         id: products.length,                                                 // Automatisch ID toewijzen
@@ -76,11 +76,11 @@ function addProduct(e) {
         price: parseFloat(document.getElementById('product-price').value),   // Prijs omzetten naar getal
         image: document.getElementById('product-image').value || '/img/placeholder.jpg' // Afbeelding of placeholder
     };
-    
+
     // Product toevoegen aan de array en opslaan in localStorage
     products.push(newProduct);
     localStorage.setItem('gamesStorage', JSON.stringify({ games: products }));
-    
+
     // UI bijwerken en formulier leegmaken
     loadProducts();
     this.reset();
@@ -93,13 +93,13 @@ function addProduct(e) {
 function deleteProduct(id) {
     // Huidige producten ophalen
     let products = JSON.parse(localStorage.getItem('gamesStorage'))?.games || [];
-    
+
     // Product met specifiek ID filteren uit de array
     products = products.filter(p => p.id !== id);
-    
+
     // Bijgewerkte lijst opslaan in localStorage
     localStorage.setItem('gamesStorage', JSON.stringify({ games: products }));
-    
+
     // UI bijwerken
     loadProducts();
 }
@@ -112,10 +112,10 @@ async function resetProducts() {
     // Originele productdata ophalen uit JSON bestand
     const response = await fetch('./games.json');
     const data = await response.json();
-    
+
     // Data opslaan in localStorage (overschrijft huidige data)
     localStorage.setItem('gamesStorage', JSON.stringify(data));
-    
+
     // UI bijwerken
     loadProducts();
 }
@@ -127,19 +127,19 @@ async function resetProducts() {
 function editProduct(id) {
     // Huidige producten ophalen
     const products = JSON.parse(localStorage.getItem('gamesStorage'))?.games || [];
-    
+
     // Specifiek product zoeken op ID
     const product = products.find(p => p.id === id);
-    
+
     // Gebruiker om nieuwe prijs vragen via prompt
     const newPrice = prompt('Nieuwe prijs:', product.price);
-    
+
     // Controleren of invoer geldig is (niet leeg en een getal)
     if (newPrice && !isNaN(newPrice)) {
         // Prijs bijwerken en opslaan
         product.price = parseFloat(newPrice);
         localStorage.setItem('gamesStorage', JSON.stringify({ games: products }));
-        
+
         // UI bijwerken
         loadProducts();
     }
