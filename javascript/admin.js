@@ -3,7 +3,7 @@
  * Dit script beheert de administratiefuncties waaronder bestellingen bekijken en producten beheren
  */
 
-// Wacht tot het DOM volledig is geladen voordat we functionaliteit toevoegen
+// Wacht tot de pagina volledig is geladen voordat we functionaliteit toevoegen
 document.addEventListener('DOMContentLoaded', () => {
     // Initiële data laden
     loadOrders();    // Bestellingen ophalen uit localStorage
@@ -23,7 +23,7 @@ function loadOrders() {
     const orders = JSON.parse(localStorage.getItem('orders')) || [];
     const ordersGrid = document.getElementById('orders-grid');
 
-    // HTML genereren voor elke bestelling en in de DOM plaatsen
+    // HTML genereren voor elke bestelling en in de pagina plaatsen
     ordersGrid.innerHTML = orders.map(order => `
         <div class="card mb-2">
             <div class="card-body">
@@ -60,7 +60,7 @@ function loadProducts() {
 
 /**
  * Nieuw product toevoegen aan de productlijst
- * @param {Event} e - Het form submit event
+ * @param {Event} e - Het formulier verzend event
  */
 function addProduct(e) {
     // Voorkom standaard formuliergedrag (pagina verversen)
@@ -74,14 +74,14 @@ function addProduct(e) {
         id: products.length,                                                 // Automatisch ID toewijzen
         title: document.getElementById('product-name').value,                // Productnaam uit formulier
         price: parseFloat(document.getElementById('product-price').value),   // Prijs omzetten naar getal
-        image: document.getElementById('product-image').value || '/img/placeholder.jpg' // Afbeelding of placeholder
+        image: document.getElementById('product-image').value || '/img/placeholder.jpg' // Afbeelding of standaard afbeelding
     };
 
-    // Product toevoegen aan de array en opslaan in localStorage
+    // Product toevoegen aan de lijst en opslaan in localStorage
     products.push(newProduct);
     localStorage.setItem('gamesStorage', JSON.stringify({ games: products }));
 
-    // UI bijwerken en formulier leegmaken
+    // Scherm bijwerken en formulier leegmaken
     loadProducts();
     this.reset();
 }
@@ -94,13 +94,13 @@ function deleteProduct(id) {
     // Huidige producten ophalen
     let products = JSON.parse(localStorage.getItem('gamesStorage'))?.games || [];
 
-    // Product met specifiek ID filteren uit de array
+    // Product met specifiek ID uit de lijst halen
     products = products.filter(p => p.id !== id);
 
     // Bijgewerkte lijst opslaan in localStorage
     localStorage.setItem('gamesStorage', JSON.stringify({ games: products }));
 
-    // UI bijwerken
+    // Scherm bijwerken
     loadProducts();
 }
 
@@ -116,7 +116,7 @@ async function resetProducts() {
     // Data opslaan in localStorage (overschrijft huidige data)
     localStorage.setItem('gamesStorage', JSON.stringify(data));
 
-    // UI bijwerken
+    // Scherm bijwerken
     loadProducts();
 }
 
@@ -131,7 +131,7 @@ function editProduct(id) {
     // Specifiek product zoeken op ID
     const product = products.find(p => p.id === id);
 
-    // Gebruiker om nieuwe prijs vragen via prompt
+    // Gebruiker om nieuwe prijs vragen via popup venster
     const newPrice = prompt('Nieuwe prijs:', product.price);
 
     // Controleren of invoer geldig is (niet leeg en een getal)
@@ -140,7 +140,7 @@ function editProduct(id) {
         product.price = parseFloat(newPrice);
         localStorage.setItem('gamesStorage', JSON.stringify({ games: products }));
 
-        // UI bijwerken
+        // Scherm bijwerken
         loadProducts();
     }
 }
