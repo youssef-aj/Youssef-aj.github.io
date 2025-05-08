@@ -26,7 +26,7 @@ function loadOrders() {
     // HTML genereren voor elke bestelling en in de pagina plaatsen
     ordersGrid.innerHTML = orders.map(order => `
         <div class="card mb-2">
-            <div class="card-body">
+            <div class="card-body ">
                 <h5>Bestelling #${order.id}</h5>
                 <p>Datum: ${order.date}</p>
                 <p>Totaal: €${order.total.toFixed(2)}</p>

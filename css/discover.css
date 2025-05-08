@@ -2,7 +2,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #1D2A35;
+    background-color: #2a3742;
     color: white;
 }
 
@@ -156,13 +156,13 @@ body {
     border-radius: 10px;
     overflow: hidden;
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgb(0, 122, 253);
+    box-shadow: 0 15px 40px rgb(253, 0, 0);
     margin-bottom: 30px;
 }
 
 .carousel:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgb(253, 0, 0);
+    box-shadow: 0 15px 40px rgb(0, 122, 253);
 }
 
 .carousel-item {
@@ -218,7 +218,7 @@ body {
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgb(253, 0, 0);
+    box-shadow: 0 10px 40px rgb(253, 0, 0);
 }
 
 .card{
