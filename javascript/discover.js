@@ -1,74 +1,65 @@
 /**
- * storefront.js - Webshop frontend voor games
- * Dit script verzorgt de functionaliteit van de game webshop, inclusief:
- * - Data laden en opslaan in localStorage
- * - Winkelwagen beheer
- * - Product weergave en filtering
- * - Checkout proces
- */
-
-/**
  * Games data laden uit localStorage of ophalen uit JSON bestand
  * Probeert eerst data uit localStorage te halen, en als dat mislukt of niet bestaat,
  * haalt het de data op uit het games.json bestand
  * @returns {Promise<Object>} Promise met de games data
  */
 async function storageGamesData() {
-    try {
-        // Definieer localStorage key
-        const localStorageKey = `gamesStorage`;
-        // Probeer data uit localStorage te halen
-        const storeData = localStorage.getItem(localStorageKey);
-        let data;
+    // Definieer localStorage key
+    const localStorageKey = `gamesStorage`;
+    // Probeer data uit localStorage te halen
+    const storeData = localStorage.getItem(localStorageKey);
+    let data;
 
-        if (storeData) {
-            try {
-                // Probeer opgeslagen data te parsen als JSON
-                data = JSON.parse(storeData);
-                console.debug("Retrieved data from localStorage:", data);
-                return data;
-            }
-            catch (error) {
-                // Als JSON parsing mislukt, log error en val terug op JSON bestand
-                console.error("Error parsing localStorage data:", error);
-                const response = await fetch(`./games.json`);
-                if (!response.ok) {
-                    throw new Error(`Error getting JSON file`);
-                }
-                // Parse JSON response
-                data = await response.json();
-                // Sla data op in localStorage voor volgende keer
-                localStorage.setItem(localStorageKey, JSON.stringify(data));
-                console.log(`Successfully fetched data from JSON file and saved to localStorage`);
-                return data;
-            }
+    if (storeData) {
+        try {
+            // Probeer opgeslagen data te parsen als JSON
+            data = JSON.parse(storeData);
+            console.debug("Retrieved data from localStorage:", data);
+            return data;
         }
-        else {
-            // Als er geen data in localStorage is, haal het op uit JSON bestand
-            const response = await fetch(`./games.json`);
-            if (!response.ok) {
-                throw new Error(`Error getting JSON file`);
-            }
-            // Parse JSON response
-            data = await response.json();
-            // Sla data op in localStorage voor volgende keer
-            localStorage.setItem(localStorageKey, JSON.stringify(data));
-            console.log(`Successfully fetched data from JSON file and saved to localStorage`);
+        catch (error) {
+            console.error("Error parsing localStorage data:", error);
+            data = await fetchJsonData();
             return data;
         }
     }
-    catch (error) {
-        // Log eventuele fouten en geef een lege games array terug als fallback
+    else {
+        // Als er geen data in localStorage is, haal het op uit JSON bestand
+        data = await fetchJsonData();
+        return data;
+    }
+}
+
+/**
+ * Fetch data from JSON file and save to localStorage
+ * @returns {Promise<Object>} The fetched data
+ */
+async function fetchJsonData() {
+    try {
+        const response = await fetch(`./games.json`);
+        if (!response.ok) {
+            throw new Error(`Error getting JSON file`);
+        }
+        // Parse JSON response
+        const data = await response.json();
+        // Sla data op in localStorage voor volgende keer
+        localStorage.setItem('gamesStorage', JSON.stringify(data));
+        console.log(`Successfully fetched data from JSON file and saved to localStorage`);
+        return data;
+    } catch (error) {
         console.error(error.message);
         return { games: [] };
     }
 }
+
 
 // Winkelwagen state variabelen
 let cart = [];          // Array om winkelwagen items in op te slaan
 let cartCount = 0;      // Aantal items in winkelwagen
 let cartTotal = 0;      // Totaalbedrag van winkelwagen
 let gamesData = null;   // Games data opslag
+
 
 // DOM elementen voor snelle toegang
 const cartButton = document.getElementById('cart-button');
@@ -82,19 +73,20 @@ let cartModal;              // Winkelwagen modal
 let checkoutSuccessModal;   // Bevestiging modal na succesvolle checkout
 let emptyCartModal;         // Lege winkelwagen waarschuwing modal
 
+
 /**
- * Initialiseer de applicatie wanneer de DOM is geladen
+ * setup de applicatie wanneer de DOM is geladen
  * Zet alle event listeners en laadt de game data
  */
-document.addEventListener('DOMContentLoaded', async () => {
-    // Initialiseer Bootstrap carousel
+async function setup() {
+    // setup Bootstrap carousel
     const carousel = new bootstrap.Carousel(document.getElementById('featuredGamesCarousel'), {
         interval: 3000,    // Verander slide elke 3 seconden
         wrap: true,        // Begin opnieuw na laatste slide
         ride: 'carousel'   // Start automatisch
     });
 
-    // Initialiseer Bootstrap modals
+    // setup Bootstrap modals
     cartModal = new bootstrap.Modal(document.getElementById('cart-modal'));
     checkoutSuccessModal = new bootstrap.Modal(document.getElementById('checkout-success-modal'));
     emptyCartModal = new bootstrap.Modal(document.getElementById('empty-cart-modal'));
@@ -110,7 +102,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const data = await storageGamesData();
         gamesData = data.games;
         renderGameCards(gamesData);
-        
+
         // Zoekfunctionaliteit instellen
         searchButton.addEventListener('click', performSearch);
         searchInput.addEventListener('keyup', (event) => {
@@ -124,7 +116,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Toon foutmelding als games niet geladen kunnen worden
         gameGrid.innerHTML = '<div class="col-12 text-center"><p>Failed to load games. Please refresh the page.</p></div>';
     }
-});
+}
+
+setup(); // Start de applicatie bij het laden van de pagina
+
 
 /**
  * Voer zoekopdracht uit op games
@@ -132,7 +127,7 @@ document.addEventListener('DOMContentLoaded', async () => {
  */
 function performSearch() {
     const searchTerm = searchInput.value.trim().toLowerCase();
-    
+
     // Check of er games data beschikbaar is
     if (!gamesData) {
         return;
@@ -143,7 +138,7 @@ function performSearch() {
         renderGameCards(gamesData);
     } else {
         // Filter games op titel die de zoekterm bevat
-        const filteredGames = gamesData.filter(game => 
+        const filteredGames = gamesData.filter(game =>
             game.title.toLowerCase().includes(searchTerm)
         );
         renderGameCards(filteredGames);
@@ -165,7 +160,7 @@ function renderGameCards(games) {
     }
 
     // Maak een kaart voor elke game
-    games.forEach(game => {
+    for (const game of games) {
         const card = document.createElement('div');
         card.className = 'col';
         card.innerHTML = `
@@ -187,7 +182,7 @@ function renderGameCards(games) {
         // Event listener toevoegen aan 'Add to Cart' knop
         const addToCartBtn = card.querySelector('.add-to-cart-btn');
         addToCartBtn.addEventListener('click', () => addToCart(game));
-    });
+    }
 }
 
 /**
@@ -273,7 +268,7 @@ function renderCartItems() {
         cartItemsContainer.innerHTML = '<div class="empty-cart-message">Your cart is empty</div>';
     } else {
         // Render elk winkelwagen item
-        cart.forEach(item => {
+        for (const item of cart) {
             const cartItemElement = document.createElement('div');
             cartItemElement.className = 'cart-item';
             cartItemElement.innerHTML = `
@@ -296,7 +291,7 @@ function renderCartItems() {
             decreaseBtn.addEventListener('click', () => decreaseQuantity(item.id));
             increaseBtn.addEventListener('click', () => increaseQuantity(item.id));
             removeBtn.addEventListener('click', () => removeFromCart(item.id));
-        });
+        }
     }
 
     // Update totaalprijs
@@ -335,7 +330,7 @@ function increaseQuantity(itemId) {
     if (itemIndex !== -1) {
         // Verhoog aantal
         cart[itemIndex].quantity += 1;
-        
+
         // Update winkelwagen status en UI
         updateCartState();
         renderCartItems();
@@ -349,7 +344,7 @@ function increaseQuantity(itemId) {
 function removeFromCart(itemId) {
     // Filter het item uit de winkelwagen
     cart = cart.filter(item => item.id !== itemId);
-    
+
     // Update winkelwagen status en UI
     updateCartState();
     renderCartItems();
@@ -374,7 +369,7 @@ function handleCheckout() {
             items: cart                   // Winkelwagen items
         });
         localStorage.setItem('orders', JSON.stringify(orders));
-        
+
         // Reset winkelwagen en toon bevestiging
         cart = [];
         updateCartState();
