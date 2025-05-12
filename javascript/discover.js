@@ -55,11 +55,15 @@ async function fetchJsonData() {
 
 
 // Winkelwagen state variabelen
-let cart = [];          // Array om winkelwagen items in op te slaan
+let cart = JSON.parse(localStorage.getItem('cartData')) || [];    // Load cart from localStorage or empty array
 let cartCount = 0;      // Aantal items in winkelwagen
 let cartTotal = 0;      // Totaalbedrag van winkelwagen
 let gamesData = null;   // Games data opslag
 
+// Function to save cart to localStorage
+function saveCartToStorage() {
+    localStorage.setItem('cartData', JSON.stringify(cart));
+}
 
 // DOM elementen voor snelle toegang
 const cartButton = document.getElementById('cart-button');
@@ -96,6 +100,9 @@ async function setup() {
 
     // Event listener voor winkelwagen knop
     cartButton.addEventListener('click', openCartModal);
+
+    // Load cart data and update UI
+    updateCartState();
 
     // Laad games data en toon game kaarten
     try {
@@ -209,6 +216,9 @@ function addToCart(game) {
     // Werk winkelwagen status bij
     updateCartState();
 
+    // Save cart to localStorage after updating
+    saveCartToStorage();
+
     // Toon visuele feedback dat item is toegevoegd
     const addButton = document.querySelector(`.add-to-cart-btn[data-game-id="${game.id}"]`);
     const originalText = addButton.textContent;
@@ -317,6 +327,9 @@ function decreaseQuantity(itemId) {
         // Update winkelwagen status en UI
         updateCartState();
         renderCartItems();
+
+        // Save cart to localStorage after updating
+        saveCartToStorage();
     }
 }
 
@@ -334,6 +347,9 @@ function increaseQuantity(itemId) {
         // Update winkelwagen status en UI
         updateCartState();
         renderCartItems();
+
+        // Save cart to localStorage after updating
+        saveCartToStorage();
     }
 }
 
@@ -348,6 +364,9 @@ function removeFromCart(itemId) {
     // Update winkelwagen status en UI
     updateCartState();
     renderCartItems();
+
+    // Save cart to localStorage after updating
+    saveCartToStorage();
 }
 
 /**
@@ -375,5 +394,8 @@ function handleCheckout() {
         updateCartState();
         cartModal.hide();
         checkoutSuccessModal.show();
+
+        // Save empty cart to localStorage after checkout
+        saveCartToStorage();
     }
 }
