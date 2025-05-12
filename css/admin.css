@@ -35,3 +35,37 @@ body {
     color: white;
 }
 
+/* Modal styling */
+.modal-content {
+    background-color: #1a2029;
+    border: 1px solid #ff0000;
+}
+
+.modal-header {
+    border-bottom: 1px solid #ff0000;
+}
+
+.modal-header .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.modal-footer {
+    border-top: 1px solid #ff0000;
+}
+
+.modal-body label {
+    color: white;
+}
+
+#newPrice {
+    background-color: #2a3742;
+    border: 1px solid #ff0000;
+    color: white;
+}
+
+#newPrice:focus {
+    background-color: #2a3742;
+    color: white;
+    box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.25);
+}
+

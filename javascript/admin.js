@@ -121,26 +121,36 @@ async function resetProducts() {
 }
 
 /**
- * Product bewerken (momenteel alleen prijs)
+ * Product bewerken via modal
  * @param {number} id - ID van het te bewerken product
  */
 function editProduct(id) {
     // Huidige producten ophalen
     const products = JSON.parse(localStorage.getItem('gamesStorage'))?.games || [];
-
-    // Specifiek product zoeken op ID
     const product = products.find(p => p.id === id);
 
-    // Gebruiker om nieuwe prijs vragen via popup venster
-    const newPrice = prompt('Nieuwe prijs:', product.price);
+    // Modal elementen
+    const editModal = new bootstrap.Modal(document.getElementById('editPriceModal'));
+    const priceInput = document.getElementById('newPrice');
 
-    // Controleren of invoer geldig is (niet leeg en een getal)
-    if (newPrice && !isNaN(newPrice)) {
-        // Prijs bijwerken en opslaan
-        product.price = parseFloat(newPrice);
-        localStorage.setItem('gamesStorage', JSON.stringify({ games: products }));
+    // Huidige prijs in input zetten
+    priceInput.value = product.price;
 
-        // Scherm bijwerken
-        loadProducts();
-    }
+    // Save button handler
+    document.getElementById('savePriceBtn').onclick = function () {
+        const newPrice = parseFloat(priceInput.value);
+
+        if (!isNaN(newPrice)) {
+            // Prijs bijwerken en opslaan
+            product.price = newPrice;
+            localStorage.setItem('gamesStorage', JSON.stringify({ games: products }));
+
+            // Modal sluiten en producten herladen
+            editModal.hide();
+            loadProducts();
+        }
+    };
+
+    // Modal tonen
+    editModal.show();
 }
