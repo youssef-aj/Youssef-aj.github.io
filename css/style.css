@@ -6,12 +6,6 @@ body {
     color: white;
 }
 
-.btn {
-    background-color: #ff3030;
-    color: white;
-
-}
-
 /* Header Style */
 .navbar {
     background-color: #0a0e14;
@@ -91,6 +85,18 @@ body {
     margin-top: 20px;
     padding: 20px;
 }
+
+.detail{
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(255, 235, 235, 0.813);
+}
+.btn {
+    background-color: #ff3030;
+    color: white;
+    margin-bottom: 20px;
+}
+
 
 /* Footer */
 .contact-title {
