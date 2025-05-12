@@ -155,7 +155,8 @@ body {
 .carousel {
     border-radius: 10px;
     overflow: hidden;
-    transform: translateY(-5px);
+    transition: transform 0.3s, box-shadow 1s;
+    transform: translateY(0px);
     box-shadow: 0 15px 40px rgb(253, 0, 0);
     margin-bottom: 30px;
 }
@@ -211,9 +212,11 @@ body {
     border: none;
     border-radius: 10px;
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 1s;
     height: 100%;
     color: white;
+    transform: translateY(0px);
+    box-shadow: 0 10px 10px rgb(0, 55, 253);
 }
 
 .card:hover {
@@ -221,10 +224,6 @@ body {
     box-shadow: 0 10px 40px rgb(253, 0, 0);
 }
 
-.card{
-    transform: translateY(-5px);
-    box-shadow: 0 10px 10px rgb(0, 55, 253);
-}
 
 .card-img-container {
     height: 200px;
@@ -402,16 +401,6 @@ footer {
     display: inline-block;
     border-bottom: 4px solid red;
     margin-bottom: 1rem;
-}
-
-.icon-circle {
-    background-color: white;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 /* dropdown netter maken */

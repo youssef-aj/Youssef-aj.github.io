@@ -1,4 +1,4 @@
-/* General Styles */
+/* body */
 body {
     margin: 0;
     padding: 0;
@@ -6,11 +6,19 @@ body {
     color: white;
 }
 
-/* Header Style */
+/* navbar*/
 .navbar {
     background-color: #0a0e14;
     padding: 15px 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff0000;
+    letter-spacing: 1px;
+    text-decoration: none;
+
 }
 
 /* Section title */
@@ -23,10 +31,10 @@ body {
     border: none;
     border-radius: 10px;
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 1s;
     height: 100%;
     color: white;
-    transform: translateY(-5px);
+    transform: translateY(0px);
     box-shadow: 0 10px 10px rgb(0, 55, 253);
 }
 
