@@ -1,12 +1,13 @@
-/* General Styles */
 body {
     margin: 0;
     padding: 0;
     background-color: #1D2A35;
     color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Header Style */
 .navbar {
     background-color: #0a0e14;
     padding: 15px 20px;
@@ -26,7 +27,6 @@ body {
 }
 
 
-/* Navigation links */
 .navbar-nav .nav-link {
     color: white;
     margin: 0 10px;
@@ -86,17 +86,21 @@ body {
     padding: 20px;
 }
 
-.detail{
+.detail {
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 0 50px rgba(255, 235, 235, 0.813);
 }
+
 .btn {
     background-color: #ff3030;
     color: white;
     margin-bottom: 20px;
 }
 
+.container {
+    flex: 1;
+}
 
 /* Footer */
 .contact-title {
@@ -105,8 +109,13 @@ body {
     padding: 5px;
 }
 
-section {
-    display: flex;
-    position: sticky;
-    justify-content: end;
+footer {
+    width: 100%;
+    background-color: #000;
+    margin-top: auto;
+}
+
+footer a {
+    color: #ff3030;
+    text-decoration: underline;
 }
