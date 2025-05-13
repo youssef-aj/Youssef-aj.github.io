@@ -42,44 +42,6 @@ body {
     align-items: center;
 }
 
-/* Profile dropdown */
-.profile-dropdown {
-    margin-right: 10px;
-}
-
-.profile-icon {
-    font-size: 24px;
-    padding: 0 5px;
-    transition: color 0.3s;
-    background: none;
-    border: none;
-    color: white;
-}
-
-.profile-icon:hover {
-    color: #ff0000;
-}
-
-.profile-icon i {
-    vertical-align: middle;
-}
-
-.dropdown-menu {
-    background-color: #1a2029;
-    border: 1px solid #2a3040;
-    margin-top: 10px;
-}
-
-.dropdown-item {
-    color: white;
-}
-
-.dropdown-item:hover,
-.dropdown-item:focus {
-    background-color: #2a3040;
-    color: #ff3030;
-}
-
 /* Home page content */
 .home-content {
     margin-top: 20px;
@@ -95,7 +57,7 @@ body {
 .btn {
     background-color: #ff3030;
     color: white;
-    margin-bottom: 20px;
+    margin-top: 30px;
 }
 
 .container {
