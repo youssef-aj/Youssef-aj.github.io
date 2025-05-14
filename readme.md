@@ -4,6 +4,7 @@ GameStore is een game webshop die ik heb gemaakt voor een schoolproject waarbij 
 
 - Werkend winkelmandje
 - Werkende zoekbalk
+- dat het Responsief is
 
 <br>
 <br>
@@ -26,7 +27,7 @@ Dit project heeft geen dependencies die geinstalleerd moeten worden nadat je dez
 # Credtis
  [Lucan Wienen](https://github.com/LABA-LUCAS) heeft mijn geholpen met het implementeren van localstorage
 
- [Son van der Burg](https://vdburg.site/) heeft mijn geholpen met het verbeteren/verkorte van me code
+ [Son van der Burg](https://vdburg.site/) heeft mijn geholpen met het verbeteren/verkorte van me code en duidelijke commands
 
 <br>
 <br>

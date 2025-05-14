@@ -51,11 +51,15 @@
                 <h5 class="section-title">Product Toevoegen</h5>
                 <form id="add-product-form" class="p-2">
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="product-name" placeholder="Naam" required>
+                        <input type="text" class="form-control" id="product-name" placeholder="Naam" required
+                            maxlength="70">
+                        <small class="text-light" id="charCount">0/70 tekens</small>
                     </div>
                     <div class="mb-3">
                         <input type="number" step="0.01" class="form-control" id="product-price" placeholder="Prijs"
-                            required>
+                            required min="0" max="200">
+                        <small class="text-light" id="maxPrice">max €200</small>
+
                     </div>
                     <div class="mb-3">
                         <input type="text" class="form-control" id="product-image" placeholder="Afbeelding URL">

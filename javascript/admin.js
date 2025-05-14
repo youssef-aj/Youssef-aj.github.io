@@ -1,32 +1,69 @@
 /**
- * admin.js - Beheerdersinterface voor game webshop
- * Dit script beheert de administratiefuncties waaronder bestellingen bekijken en producten beheren
+ * Admin Panel Beheersysteem
+ * -------------------------
+ * Dit script beheert de admin functionaliteit van de GameStore:
+ * - Bestellingen bekijken
+ * - Producten toevoegen/bewerken/verwijderen
+ * - Producten resetten naar standaardwaarden
  */
 
-// Wacht tot de pagina volledig is geladen voordat we functionaliteit toevoegen
-document.addEventListener('DOMContentLoaded', () => {
-    // Initiële data laden
-    loadOrders();    // Bestellingen ophalen uit localStorage
-    loadProducts();  // Producten ophalen uit localStorage
+/**
+ * DOM Elements Object
+ * Centrale plek voor alle belangrijke DOM element referenties
+ * Maakt het makkelijker om elementen te vinden en bij te werken
+ */
+const ELEMENTS = {
+    productNameInput: document.getElementById('product-name'),
+    charCount: document.getElementById('charCount'),
+    ordersGrid: document.getElementById('orders-grid'),
+    productsTable: document.getElementById('products-table'),
+    addProductForm: document.getElementById('add-product-form'),
+    resetProductsButton: document.getElementById('reset-products')
+};
 
-    // Event listeners voor formulieren en knoppen instellen
-    document.getElementById('add-product-form').addEventListener('submit', addProduct);   // Formulier voor nieuw product
-    document.getElementById('reset-products').addEventListener('click', resetProducts);   // Reset knop voor producten
+/**
+ * Pagina Initialisatie
+ * --------------------
+ * - Laadt alle benodigde data
+ * - Stelt event listeners in
+ * - Initialiseert karakter teller
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    // Load initial data
+    loadOrders();
+    loadProducts();
+
+    // Set up event listeners
+    ELEMENTS.addProductForm.addEventListener('submit', addProduct);
+    ELEMENTS.resetProductsButton.addEventListener('click', resetProducts);
+
+    // Character count for product name
+    ELEMENTS.productNameInput.addEventListener('input', updateCharCount);
 });
 
 /**
- * Bestellingen laden uit localStorage en weergeven in het bestellingenoverzicht
- * Toont bestelnummer, datum en totaalbedrag voor elke bestelling
+ * Product Naam Validatie
+ * ---------------------
+ * Houdt bij hoeveel karakters er in de productnaam zijn
+ * Maximum is 70 karakters
+ */
+function updateCharCount() {
+    const length = ELEMENTS.productNameInput.value.length;
+    ELEMENTS.charCount.textContent = `${length}/70 tekens`;
+}
+
+/**
+ * Bestellingen Management
+ * ----------------------
+ * Laadt en toont alle bestellingen uit localStorage
+ * Toont bestelnummer, datum en totaalbedrag
  */
 function loadOrders() {
-    // Bestellingen ophalen uit localStorage (of lege array als er geen zijn)
     const orders = JSON.parse(localStorage.getItem('orders')) || [];
-    const ordersGrid = document.getElementById('orders-grid');
 
-    // HTML genereren voor elke bestelling en in de pagina plaatsen
-    ordersGrid.innerHTML = orders.map(order => `
+    ELEMENTS.ordersGrid.innerHTML = orders.map(order => `
         <div class="card mb-2">
-            <div class="card-body ">
+            <div class="card-body">
                 <h5>Bestelling #${order.id}</h5>
                 <p>Datum: ${order.date}</p>
                 <p>Totaal: €${order.total.toFixed(2)}</p>
@@ -36,16 +73,15 @@ function loadOrders() {
 }
 
 /**
- * Producten laden uit localStorage en weergeven in de producttabel
- * Toont ID, naam, prijs en actieknoppen voor elk product
+ * Product Lijst Management
+ * -----------------------
+ * Laadt en toont alle producten in de tabel
+ * Met knoppen voor bewerken en verwijderen
  */
 function loadProducts() {
-    // Producten ophalen uit localStorage (of lege array als er geen zijn)
     const products = JSON.parse(localStorage.getItem('gamesStorage'))?.games || [];
-    const table = document.getElementById('products-table');
 
-    // HTML genereren voor elk product in tabelvorm
-    table.innerHTML = products.map(product => `
+    ELEMENTS.productsTable.innerHTML = products.map(product => `
         <tr>
             <td>${product.id}</td>
             <td>${product.title}</td>
@@ -59,98 +95,148 @@ function loadProducts() {
 }
 
 /**
- * Nieuw product toevoegen aan de productlijst
- * @param {Event} e - Het formulier verzend event
+ * Nieuw Product Toevoegen
+ * ----------------------
+ * @param {Event} e - Form submit event
+ * 
+ * Validaties:
+ * - Naam max 70 karakters
+ * - Prijs max €200
+ * 
+ * Process:
+ * 1. Valideer input
+ * 2. Maak nieuw product object
+ * 3. Voeg toe aan localStorage
+ * 4. Update UI
  */
 function addProduct(e) {
-    // Voorkom standaard formuliergedrag (pagina verversen)
     e.preventDefault();
 
-    // Huidige producten ophalen uit localStorage
+    const productName = ELEMENTS.productNameInput.value;
+    const productPrice = parseFloat(document.getElementById('product-price').value);
+
+    // Validate input
+    if (productName.length > 70) {
+        alert('Productnaam mag niet langer zijn dan 70 tekens');
+        return;
+    }
+
+    if (productPrice > 200) {
+        alert('Productprijs mag niet hoger zijn dan €200');
+        return;
+    }
+
+    // Get current products
     const products = JSON.parse(localStorage.getItem('gamesStorage'))?.games || [];
 
-    // Nieuw product aanmaken met gegevens uit het formulier
+    // Create new product
     const newProduct = {
-        id: products.length,                                                 // Automatisch ID toewijzen
-        title: document.getElementById('product-name').value,                // Productnaam uit formulier
-        price: parseFloat(document.getElementById('product-price').value),   // Prijs omzetten naar getal
-        image: document.getElementById('product-image').value || '/img/placeholder.jpg' // Afbeelding of standaard afbeelding
+        id: products.length,
+        title: productName,
+        price: productPrice,
+        image: document.getElementById('product-image').value || '/img/placeholder.jpg'
     };
 
-    // Product toevoegen aan de lijst en opslaan in localStorage
+    // Add to products and save
     products.push(newProduct);
     localStorage.setItem('gamesStorage', JSON.stringify({ games: products }));
 
-    // Scherm bijwerken en formulier leegmaken
+    // Update UI and reset form
     loadProducts();
-    this.reset();
+    e.target.reset();
 }
 
 /**
- * Product verwijderen uit de productlijst
- * @param {number} id - ID van het te verwijderen product
+ * Product Verwijderen
+ * ------------------
+ * @param {number} id - Product ID om te verwijderen
+ * 
+ * Process:
+ * 1. Verwijder product uit array
+ * 2. Update alle product IDs
+ * 3. Sla op in localStorage
+ * 4. Update UI
  */
 function deleteProduct(id) {
-    // Huidige producten ophalen
     let products = JSON.parse(localStorage.getItem('gamesStorage'))?.games || [];
 
-    // Product met specifiek ID uit de lijst halen
-    products = products.filter(p => p.id !== id);
+    products = products.filter(product => product.id !== id);
 
-    // Bijgewerkte lijst opslaan in localStorage
+    // Update IDs to maintain sequence
+    products.forEach((product, index) => {
+        product.id = index;
+    });
+
     localStorage.setItem('gamesStorage', JSON.stringify({ games: products }));
-
-    // Scherm bijwerken
     loadProducts();
 }
 
 /**
- * Producten resetten naar de standaardwaarden uit games.json
- * Verwijdert alle aangepaste producten en herstelt de originele lijst
+ * Products Resetten
+ * ----------------
+ * Zet alle producten terug naar de originele staat
+ * door games.json opnieuw in te laden
+ * 
+ * Error handling:
+ * - Toont success message bij succes
+ * - Toont error message bij mislukking
  */
 async function resetProducts() {
-    // Originele productdata ophalen uit JSON bestand
-    const response = await fetch('./games.json');
-    const data = await response.json();
-
-    // Data opslaan in localStorage (overschrijft huidige data)
-    localStorage.setItem('gamesStorage', JSON.stringify(data));
-
-    // Scherm bijwerken
-    loadProducts();
+    try {
+        const response = await fetch('games.json');
+        const data = await response.json();
+        localStorage.setItem('gamesStorage', JSON.stringify(data));
+        loadProducts();
+        alert('Producten zijn gereset naar de standaardwaarden');
+    } catch (error) {
+        console.error('Error resetting products:', error);
+        alert('Er is een fout opgetreden bij het resetten van de producten');
+    }
 }
 
 /**
- * Product bewerken via modal
- * @param {number} id - ID van het te bewerken product
+ * Product Prijs Bewerken
+ * ---------------------
+ * @param {number} id - Product ID om te bewerken
+ * 
+ * Features:
+ * - Toont huidige prijs
+ * - Validatie: max €200
+ * - Auto-update na opslaan
+ * - Cleanup van event listeners
  */
 function editProduct(id) {
-    // Huidige producten ophalen
     const products = JSON.parse(localStorage.getItem('gamesStorage'))?.games || [];
     const product = products.find(p => p.id === id);
 
-    // Modal elementen
+    if (!product) return;
+
+    // Initialize edit modal
     const editModal = new bootstrap.Modal(document.getElementById('editPriceModal'));
-    const priceInput = document.getElementById('newPrice');
+    const newPriceInput = document.getElementById('newPrice');
+    const savePriceBtn = document.getElementById('savePriceBtn');
 
-    // Huidige prijs in input zetten
-    priceInput.value = product.price;
+    // Set current price
+    newPriceInput.value = product.price;
 
-    // Save button handler
-    document.getElementById('savePriceBtn').onclick = function () {
-        const newPrice = parseFloat(priceInput.value);
+    // Handle save
+    const saveHandler = () => {
+        const newPrice = parseFloat(newPriceInput.value);
 
-        if (!isNaN(newPrice)) {
-            // Prijs bijwerken en opslaan
-            product.price = newPrice;
-            localStorage.setItem('gamesStorage', JSON.stringify({ games: products }));
-
-            // Modal sluiten en producten herladen
-            editModal.hide();
-            loadProducts();
+        if (newPrice > 200) {
+            alert('Prijs mag niet hoger zijn dan €200');
+            return;
         }
+
+        product.price = newPrice;
+        localStorage.setItem('gamesStorage', JSON.stringify({ games: products }));
+        loadProducts();
+        editModal.hide();
+
+        // Clean up event listener
+        savePriceBtn.removeEventListener('click', saveHandler);
     };
 
-    // Modal tonen
+    savePriceBtn.addEventListener('click', saveHandler);
     editModal.show();
 }
