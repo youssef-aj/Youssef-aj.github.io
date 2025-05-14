@@ -43,19 +43,21 @@ Dit project heeft geen dependencies die geinstalleerd moeten worden nadat je dez
 # stappenplan
 Ik heb de website [trello](https://trello.com/nl) gebruikt om mijn website te bouwen. Wat is trello? trello is een veelgebruikte visuele tool voor werkbeheer die teams helpt bij het plannen, organiseren en volgen van projecten en taken.
 ### dit is de stappen plan die ik heb gebruikt:
-![alt text](image.png)
+![alt text](./foto's/foto's%20readme/image.png)
 
 <br>
 <br>
 
 # design
 ik heb de webiste [figma](https://www.figma.com/login) gebruikt om een schets te maken van mijn website om te kijken wat ik het ga maken en welke kleuren ik gebruik en waar ik alles precies wil ik vind het een aanrader om deze website te gebruiken zodat je precies weet wat je wilt en hoe je het wilt
+
 ## hier is zijn mijn schetsen die ik heb gebruikt:
+
 ### home pagina:
-![alt text](<Screenshot 2025-05-12 112510.png>)
+![alt text](./foto's/foto's%20readme/homepagina.png)
 
 ### discover pagina:
-![alt text](image-1.png)
+![alt text](./foto's/foto's%20readme/discoverpage.png)
 
 ### footer:
-![alt text](image-2.png)
+![alt text](./foto's/foto's%20readme/footer.png)
