@@ -1,18 +1,21 @@
 # 📖 Beschrijving
 
-GameStore is een game webshop die ik heb gemaakt voor een schoolproject waarbij ik gebruik heb gemaakt van HTML, het bootstrap framwork, JavaScript en CSS. Dingen die je gaat zien in de webshop:
+GameStore is een game webshop die ik heb gemaakt voor een schoolproject waarbij ik gebruik heb gemaakt van HTML, het bootstrap framwork, JavaScript en CSS. 
+Dingen die je gaat zien in de webshop:
 
 - Werkend winkelmandje
 - Werkende zoekbalk
 - dat het Responsief is
 
+Hoe ik op het idee ben gekomen voor mijn webshop is omdat ik zelf enorm van gamen hou en de laatste tijd heel veel games heb gekocht.
+
 <br>
 <br>
 
-# 💡Instalattion guide:
+# 💡Installation guide:
 1. **Clone de repository**: Navigeer met je CLI naar de locatie waar je dit project neer wilt zetten, en run het commando `git clone https://github.com/youssef-aj/Youssef-aj.github.io.git`.
 
-2. Je kan nu de website openen door het index.html bestand te openen.
+2. Je kan naar de website toegaan door de index.html te openen.
 
 <br>
 <br>
@@ -40,24 +43,23 @@ Dit project heeft geen dependencies die geinstalleerd moeten worden nadat je dez
 <br>
 <br>
 
-# stappenplan
-Ik heb de website [trello](https://trello.com/nl) gebruikt om mijn website te bouwen. Wat is trello? trello is een veelgebruikte visuele tool voor werkbeheer die teams helpt bij het plannen, organiseren en volgen van projecten en taken.
-### dit is de stappen plan die ik heb gebruikt:
-![alt text](./foto's/foto's%20readme/image.png)
-
+# Stappenplan
+Ik heb de website [trello](https://trello.com/nl) gebruikt voor mij stappenplan. Wat is trello? trello is een veelgebruikte visuele tool voor werkbeheer die teams helpt bij het plannen, organiseren en volgen van projecten en taken.
+### Dit is het stappenplan die ik heb gebruikt:
+![alt text](./foto's/foto's%20readme/stappenplan.png)
 <br>
 <br>
 
-# design
-ik heb de webiste [figma](https://www.figma.com/login) gebruikt om een schets te maken van mijn website om te kijken wat ik het ga maken en welke kleuren ik gebruik en waar ik alles precies wil ik vind het een aanrader om deze website te gebruiken zodat je precies weet wat je wilt en hoe je het wilt
+# Design
+Ik heb de webiste [figma](https://www.figma.com/login) gebruikt om een schets te maken van mijn webshop om te kijken wat ik ga maken en welke kleuren ik gebruik en waar ik alles precies wil ik vind het een aanrader om deze site te gebruiken zodat je precies weet wat je wilt en hoe je het wilt
 
-## hier is zijn mijn schetsen die ik heb gebruikt:
+## Hier is zijn mijn schetsen die ik heb gebruikt:
 
-### home pagina:
+### Home pagina:
 ![alt text](./foto's/foto's%20readme/homepagina.png)
 
-### discover pagina:
+### Discover pagina:
 ![alt text](./foto's/foto's%20readme/discoverpage.png)
 
-### footer:
+### Footer:
 ![alt text](./foto's/foto's%20readme/footer.png)
