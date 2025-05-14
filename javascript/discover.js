@@ -35,11 +35,10 @@ async function fetchJsonData() {
 }
 
 // Winkelwagen state variabelen
-let cart = JSON.parse(localStorage.getItem('cartData')) || [];    // Load cart from localStorage or empty array
-let cartCount = 0;      // Aantal items in winkelwagen
-let cartTotal = 0;      // Totaalbedrag van winkelwagen
-let gamesData = null;   // Games data opslag
-
+let cart = JSON.parse(localStorage.getItem('cartData')) || [];    
+let cartCount = 0;      
+let cartTotal = 0;      
+let gamesData = null;  
 // Function to save cart to localStorage
 function saveCartToStorage() {
     localStorage.setItem('cartData', JSON.stringify(cart));
@@ -53,9 +52,9 @@ const searchInput = document.getElementById('search-input');
 const searchButton = document.getElementById('search-button');
 
 // Bootstrap modal instanties
-let cartModal;              // Winkelwagen modal
-let checkoutSuccessModal;   // Bevestiging modal na succesvolle checkout
-let emptyCartModal;         // Lege winkelwagen waarschuwing modal
+let cartModal;       
+let checkoutSuccessModal; 
+let emptyCartModal;        
 
 
 /**

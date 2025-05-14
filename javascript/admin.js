@@ -1,17 +1,5 @@
-/**
- * Admin Panel Beheersysteem
- * -------------------------
- * Dit script beheert de admin functionaliteit van de GameStore:
- * - Bestellingen bekijken
- * - Producten toevoegen/bewerken/verwijderen
- * - Producten resetten naar standaardwaarden
- */
+// Admin panel voor het beheren van de GameStore
 
-/**
- * DOM Elements Object
- * Centrale plek voor alle belangrijke DOM element referenties
- * Maakt het makkelijker om elementen te vinden en bij te werken
- */
 const ELEMENTS = {
     productNameInput: document.getElementById('product-name'),
     charCount: document.getElementById('charCount'),
@@ -21,43 +9,23 @@ const ELEMENTS = {
     resetProductsButton: document.getElementById('reset-products')
 };
 
-/**
- * Pagina Initialisatie
- * --------------------
- * - Laadt alle benodigde data
- * - Stelt event listeners in
- * - Initialiseert karakter teller
- */
+// Laadt de pagina met alle benodigde data en event listeners
 document.addEventListener('DOMContentLoaded', () => {
-    // Load initial data
     loadOrders();
     loadProducts();
 
-    // Set up event listeners
     ELEMENTS.addProductForm.addEventListener('submit', addProduct);
     ELEMENTS.resetProductsButton.addEventListener('click', resetProducts);
-
-    // Character count for product name
     ELEMENTS.productNameInput.addEventListener('input', updateCharCount);
 });
 
-/**
- * Product Naam Validatie
- * ---------------------
- * Houdt bij hoeveel karakters er in de productnaam zijn
- * Maximum is 70 karakters
- */
+// Update het aantal karakters voor de productnaam (max 70)
 function updateCharCount() {
     const length = ELEMENTS.productNameInput.value.length;
     ELEMENTS.charCount.textContent = `${length}/70 tekens`;
 }
 
-/**
- * Bestellingen Management
- * ----------------------
- * Laadt en toont alle bestellingen uit localStorage
- * Toont bestelnummer, datum en totaalbedrag
- */
+// Laadt alle bestellingen uit localStorage
 function loadOrders() {
     const orders = JSON.parse(localStorage.getItem('orders')) || [];
 
@@ -72,12 +40,7 @@ function loadOrders() {
     `).join('');
 }
 
-/**
- * Product Lijst Management
- * -----------------------
- * Laadt en toont alle producten in de tabel
- * Met knoppen voor bewerken en verwijderen
- */
+// Laadt alle producten in de tabel
 function loadProducts() {
     const products = JSON.parse(localStorage.getItem('gamesStorage'))?.games || [];
 
@@ -94,28 +57,13 @@ function loadProducts() {
     `).join('');
 }
 
-/**
- * Nieuw Product Toevoegen
- * ----------------------
- * @param {Event} e - Form submit event
- * 
- * Validaties:
- * - Naam max 70 karakters
- * - Prijs max €200
- * 
- * Process:
- * 1. Valideer input
- * 2. Maak nieuw product object
- * 3. Voeg toe aan localStorage
- * 4. Update UI
- */
+// Voegt een nieuw product toe aan de winkel
 function addProduct(e) {
     e.preventDefault();
 
     const productName = ELEMENTS.productNameInput.value;
     const productPrice = parseFloat(document.getElementById('product-price').value);
 
-    // Validate input
     if (productName.length > 70) {
         alert('Productnaam mag niet langer zijn dan 70 tekens');
         return;
@@ -126,10 +74,8 @@ function addProduct(e) {
         return;
     }
 
-    // Get current products
     const products = JSON.parse(localStorage.getItem('gamesStorage'))?.games || [];
 
-    // Create new product
     const newProduct = {
         id: products.length,
         title: productName,
@@ -137,32 +83,19 @@ function addProduct(e) {
         image: document.getElementById('product-image').value || '/img/placeholder.jpg'
     };
 
-    // Add to products and save
     products.push(newProduct);
     localStorage.setItem('gamesStorage', JSON.stringify({ games: products }));
 
-    // Update UI and reset form
     loadProducts();
     e.target.reset();
 }
 
-/**
- * Product Verwijderen
- * ------------------
- * @param {number} id - Product ID om te verwijderen
- * 
- * Process:
- * 1. Verwijder product uit array
- * 2. Update alle product IDs
- * 3. Sla op in localStorage
- * 4. Update UI
- */
+// Verwijdert een product uit de winkel
 function deleteProduct(id) {
     let products = JSON.parse(localStorage.getItem('gamesStorage'))?.games || [];
 
     products = products.filter(product => product.id !== id);
 
-    // Update IDs to maintain sequence
     products.forEach((product, index) => {
         product.id = index;
     });
@@ -171,16 +104,7 @@ function deleteProduct(id) {
     loadProducts();
 }
 
-/**
- * Products Resetten
- * ----------------
- * Zet alle producten terug naar de originele staat
- * door games.json opnieuw in te laden
- * 
- * Error handling:
- * - Toont success message bij succes
- * - Toont error message bij mislukking
- */
+// Reset alle producten naar de originele staat
 async function resetProducts() {
     try {
         const response = await fetch('games.json');
@@ -194,32 +118,19 @@ async function resetProducts() {
     }
 }
 
-/**
- * Product Prijs Bewerken
- * ---------------------
- * @param {number} id - Product ID om te bewerken
- * 
- * Features:
- * - Toont huidige prijs
- * - Validatie: max €200
- * - Auto-update na opslaan
- * - Cleanup van event listeners
- */
+// Past de prijs van een product aan
 function editProduct(id) {
     const products = JSON.parse(localStorage.getItem('gamesStorage'))?.games || [];
     const product = products.find(p => p.id === id);
 
     if (!product) return;
 
-    // Initialize edit modal
     const editModal = new bootstrap.Modal(document.getElementById('editPriceModal'));
     const newPriceInput = document.getElementById('newPrice');
     const savePriceBtn = document.getElementById('savePriceBtn');
 
-    // Set current price
     newPriceInput.value = product.price;
 
-    // Handle save
     const saveHandler = () => {
         const newPrice = parseFloat(newPriceInput.value);
 
@@ -233,7 +144,6 @@ function editProduct(id) {
         loadProducts();
         editModal.hide();
 
-        // Clean up event listener
         savePriceBtn.removeEventListener('click', saveHandler);
     };
 
