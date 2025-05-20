@@ -46,7 +46,7 @@ Dit project heeft geen dependencies die geinstalleerd moeten worden nadat je dez
 # Stappenplan
 Ik heb de website [trello](https://trello.com/nl) gebruikt voor mij stappenplan. Wat is trello? trello is een veelgebruikte visuele tool voor werkbeheer die teams helpt bij het plannen, organiseren en volgen van projecten en taken.
 ### Dit is het stappenplan die ik heb gebruikt:
-![alt text](./foto's/foto's%20readme/stappenplan.png)
+![alt text](./foto's%20readme/stappenplan.png)
 <br>
 <br>
 
@@ -56,10 +56,10 @@ Ik heb de webiste [figma](https://www.figma.com/login) gebruikt om een schets te
 ## Hier is zijn mijn schetsen die ik heb gebruikt:
 
 ### Home pagina:
-![alt text](./foto's/foto's%20readme/homepagina.png)
+![alt text](./foto's%20readme/homepagina.png)
 
 ### Discover pagina:
-![alt text](./foto's/foto's%20readme/discoverpage.png)
+![alt text](./foto's%20readme/discoverpage.png)
 
 ### Footer:
-![alt text](./foto's/foto's%20readme/footer.png)
+![alt text](./foto's%20readme/footer.png)
