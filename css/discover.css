@@ -411,7 +411,7 @@ footer {
 
 footer a {
     color: #ff3030;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .container {
