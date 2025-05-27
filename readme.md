@@ -60,6 +60,3 @@ Ik heb de webiste [figma](https://www.figma.com/login) gebruikt om een schets te
 
 ### Discover pagina:
 ![alt text](./img/img%20readme/discoverpage.png)
-
-### Footer:
-![alt text](./img/img%20readme/footer.png)
