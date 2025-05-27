@@ -31,8 +31,7 @@ function loadOrders() {
 
     ELEMENTS.ordersGrid.innerHTML = orders.map(order => `
         <div class="card mb-2">
-            <div class="card-body">
-                <h5>Bestelling #${order.id}</h5>
+            <div class="card-body">                <h5>Bestelling #${order.id + 1}</h5>
                 <p>Datum: ${order.date}</p>
                 <p>Totaal: €${order.total.toFixed(2)}</p>
             </div>
@@ -127,19 +126,33 @@ function editProduct(id) {
 
     const editModal = new bootstrap.Modal(document.getElementById('editPriceModal'));
     const newPriceInput = document.getElementById('newPrice');
+    const newNameInput = document.getElementById('newName');
+    const newImageInput = document.getElementById('newImage');
     const savePriceBtn = document.getElementById('savePriceBtn');
 
     newPriceInput.value = product.price;
+    newNameInput.value = product.title;
+    newImageInput.value = product.image;
 
     const saveHandler = () => {
         const newPrice = parseFloat(newPriceInput.value);
+        const newName = newNameInput.value.trim();
+        const newImage = newImageInput.value.trim();
 
         if (newPrice > 200) {
             alert('Prijs mag niet hoger zijn dan €200');
             return;
         }
 
+        if (newName.length > 70) {
+            alert('Productnaam mag niet langer zijn dan 70 tekens');
+            return;
+        }
+
         product.price = newPrice;
+        product.title = newName;
+        product.image = newImage;
+
         localStorage.setItem('gamesStorage', JSON.stringify({ games: products }));
         loadProducts();
         editModal.hide();

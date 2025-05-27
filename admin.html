@@ -71,18 +71,28 @@
 
     </div>
 
-    <!-- Prijs Bewerken Modal -->
+    <!-- product Bewerken Modal -->
     <div class="modal fade" id="editPriceModal" tabindex="-1" aria-labelledby="editPriceModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editPriceModalLabel">Prijs Aanpassen</h5>
+                    <h5 class="modal-title" id="editPriceModalLabel">Product Bewerken</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="newPrice" class="form-label">Nieuwe prijs:</label>
-                        <input type="number" class="form-control" id="newPrice" step="0.01" required>
+                        <label for="newName" class="form-label">Naam:</label>
+                        <input type="text" class="form-control" id="newName" required maxlength="70">
+                        <small class="text-light" id="editCharCount">0/70 tekens</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newPrice" class="form-label">Prijs:</label>
+                        <input type="number" class="form-control" id="newPrice" step="0.01" required min="0" max="200">
+                        <small class="text-light">max €200</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newImage" class="form-label">Afbeelding URL:</label>
+                        <input type="text" class="form-control" id="newImage" required>
                     </div>
                 </div>
                 <div class="modal-footer">
