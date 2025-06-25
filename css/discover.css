@@ -1,0 +1,486 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #2a3742;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Style */
+.navbar {
+    background-color: #0a0e14;
+    padding: 15px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff0000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* Navigation links */
+.navbar-nav .nav-link {
+    color: white;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ff0000;
+}
+
+.navbar-nav .nav-item {
+    display: flex;
+    align-items: center;
+}
+
+/* Search bar */
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #1a2029;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin: 0 15px;
+    flex-grow: 1;
+    max-width: 500px;
+}
+
+.search-input {
+    background: none;
+    border: none;
+    color: white;
+    outline: none;
+    width: 100%;
+    padding: 5px;
+}
+
+.search-input::placeholder {
+    color: #8a9aad;
+}
+
+.search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    padding: 5px;
+}
+
+/* Profile dropdown */
+.profile-dropdown {
+    margin-right: 10px;
+}
+
+.profile-icon {
+    font-size: 24px;
+    padding: 0 5px;
+    transition: color 0.3s;
+    background: none;
+    border: none;
+    color: white;
+}
+
+.profile-icon:hover {
+    color: #ff0000;
+}
+
+.profile-icon i {
+    vertical-align: middle;
+}
+
+.dropdown-menu {
+    background-color: #1a2029;
+    border: 1px solid #2a3040;
+    margin-top: 10px;
+}
+
+.dropdown-item {
+    color: white;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #2a3040;
+    color: #ff0000;
+}
+
+/* Cart */
+.cart-container {
+    position: relative;
+    margin-left: 10px;
+}
+
+.cart-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    padding: 5px;
+    color: white;
+    font-size: 24px;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff0000;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Home page content */
+.home-content {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+/* Carousel Styles */
+.carousel {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 1s;
+    transform: translateY(0px);
+    box-shadow: 0 15px 40px rgb(253, 0, 0);
+    margin-bottom: 30px;
+}
+
+.carousel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgb(0, 122, 253);
+}
+
+.carousel-item {
+    height: 500px;
+    background-color: #1a2029;
+    position: relative;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-game-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    text-align: center;
+}
+
+.carousel-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Section title */
+.section-title {
+    color: #ff0000;
+    font-weight: 700;
+    border-bottom: 3px solid #00f2ff;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+/* Game cards Style */
+.card {
+    background-color: #1a2029;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 1s;
+    height: 100%;
+    color: white;
+    transform: translateY(0px);
+    box-shadow: 0 10px 10px rgb(0, 55, 253);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgb(253, 0, 0);
+}
+
+
+.card-img-container {
+    height: 200px;
+    overflow: hidden;
+    background-color: #253040;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-img-top {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.card-price {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.add-to-cart-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #ff0000;
+}
+
+/* Cart Modal */
+.modal-content {
+    background-color: #1a2029;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.modal-header {
+    border-bottom: 1px solid #2a3040;
+    padding: 15px 20px;
+}
+
+.modal-title {
+    color: rgb(255, 0, 0);
+    font-weight: 900;
+}
+
+.btn-close {
+    color: white;
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.cart-items {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #2a3040;
+}
+
+.cart-item-title {
+    flex: 1;
+    font-weight: 500;
+}
+
+.cart-item-price {
+    color: #3498db;
+    margin: 0 15px;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.quantity-btn {
+    background: none;
+    border: 1px solid #503a3a;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 5px;
+}
+
+.quantity-value {
+    margin: 0 5px;
+}
+
+.remove-item-btn {
+    background: none;
+    border: none;
+    color: #ff5555;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    border-top: 1px solid #2a3040;
+    margin-top: 10px;
+}
+
+#cart-total-price {
+    color: #ffffff;
+}
+
+.modal-footer {
+    border-top: 1px solid #ff0000;
+}
+
+.btn-secondary {
+    background-color: #3a4050;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #db3434;
+    border: none;
+}
+
+.empty-cart-message {
+    text-align: center;
+    padding: 20px;
+    color: #8a9aad;
+    font-style: italic;
+}
+
+/* Footer */
+.contact-title {
+    display: inline-block;
+    border-bottom: 4px solid red;
+    padding: 5px;
+}
+
+footer {
+    width: 100%;
+    background-color: #000;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    margin-top: 2rem;
+}
+
+footer a {
+    color: #ff3030;
+    text-decoration: none;
+}
+
+.container {
+    flex: 1 0 auto;
+}
+
+/* dropdown netter maken */
+@media (max-width: 991px) {
+    .search-container {
+        margin: 10px 0;
+        max-width: 100%;
+    }
+
+    .carousel-item {
+        height: 300px;
+    }
+
+    .carousel-title {
+        font-size: 1.8rem;
+    }
+
+    .navbar-collapse {
+        margin-top: 15px;
+    }
+
+    .navbar-nav {
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .nav-item {
+        margin-right: 10px;
+    }
+
+    footer {
+        position: relative;
+    }
+}
+
+@media (max-width: 767px) {
+    .carousel-item {
+        height: 200px;
+    }
+
+    .carousel-title {
+        font-size: 1.5rem;
+    }
+
+    .search-container {
+        order: -1;
+        width: 100%;
+    }
+
+    .container {
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .search-container {
+        margin-bottom: 10px;
+    }
+
+    .card-img-container {
+        height: 150px;
+    }
+}

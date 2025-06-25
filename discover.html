@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameStore Discover</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- icon bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <link href="css/discover.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">GameStore</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <div class="search-container mx-lg-auto">
+                    <input type="text" id="search-input" class="search-input" placeholder="Search games">
+                    <button id="search-button" class="search-button">
+                        <span class="search-icon">🔍</span>
+                    </button>
+                </div>
+
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="discover.html">Discover</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <div class="cart-container">
+                            <button id="cart-button" class="cart-button">
+                                <span class="cart-icon">🛒</span>
+                                <span id="cart-count" class="cart-count">0</span>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Carousel -->
+        <div id="featuredGamesCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#featuredGamesCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#featuredGamesCarousel" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#featuredGamesCarousel" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+
+            <!-- Carousel Inner Content -->
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="3000">
+                    <img src="img/eldenring.webp" class="d-block w-100" alt="Elden Ring">
+                    <div class="carousel-game-content">
+                        <h2 class="carousel-title">Elden Ring</h2>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="img/cyberpunk.webp" class="d-block w-100" alt="Cyberpunk 2077">
+                    <div class="carousel-game-content">
+                        <h2 class="carousel-title">Cyberpunk 2077</h2>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="img/godofwar.webp" class="d-block w-100" alt="God of War">
+                    <div class="carousel-game-content">
+                        <h2 class="carousel-title">God of War</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#featuredGamesCarousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#featuredGamesCarousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!-- Game cards -->
+        <h2 class="section-title mb-4">Discover</h2>
+        <div id="game-grid" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <!-- Game cards will be populated here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="contact-section text-white mt-5" style="background-color: #000;">
+        <div class="container py-2">
+            <div class="row p-5">
+                <div class="col-md-6">
+                    <h2 class="contact-title text-white">Contact</h2>
+
+                    <ul class="list-unstyled mt-3">
+                        <li class="d-flex align-items-center mb-3">
+                            <div class=" text-center text-dark">
+                                <img width="20" src="./img/instagram/instagram.png" alt="instagram">
+                            </div>
+                            <span class="ms-3"><a href="https://www.instagram.com/youssef17.aj/"
+                                    target="_blank">Instagram</a></span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                            <div class=" text-center text-dark">
+                                <img width="20" src="./img/linkedin/LI-In-Bug.png" alt="linkedin">
+                            </div>
+                            <a class="ms-3" href="https://www.linkedin.com/in/youssef-ajari-75156a334/"
+                                target="_blank">Linkedin</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6">
+                    <h2 class="contact-title text-white">Over mij</h2>
+
+                    <p>Mijn naam is Youssef Ajari. Ik ben 17 jaar. Ik volg de opleiding software developer op de <a
+                            href="https://www.bit-academy.nl/" target="blank">Bit Academy</a>
+
+                        in Amsterdam. Ik ben een gamer en ik hou van technologie. Ik ben altijd op zoek naar nieuwe
+                        manieren om
+                        mijn vaardigheden te verbeteren en mijn kennis uit te breiden.
+                        <br>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cart-modal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Your Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cart-items" class="cart-items">
+                        <!-- Cart items will be populated here by JavaScript -->
+                    </div>
+                    <div class="cart-total">
+                        <span>Total:</span>
+                        <span id="cart-total-price">€0.00</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+                    <button type="button" class="btn btn-primary" id="checkout-button">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Success Modal -->
+    <div class="modal fade" id="checkout-success-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thank you!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Thank you for your order! Your games will be delivered soon.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empty Cart Modal -->
+    <div class="modal fade" id="empty-cart-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Empty Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Your cart is empty. Please add some games before checkout.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="javascript/discover.js"></script>
+</body>
+
+</html>
