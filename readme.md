@@ -7,7 +7,7 @@ Dingen die je gaat zien in de webshop:
 - Werkende zoekbalk
 - dat het Responsief is
 
-Hoe ik op het idee ben gekomen voor mijn webshop is omdat ik zelf enorm van gamen hou en de laatste tijd heel veel games heb gekocht.
+Hoe ik op het idee ben gekomen voor mijn webshop is omdat ik zelf enorm van gamen hou.
 
 <br>
 <br>
